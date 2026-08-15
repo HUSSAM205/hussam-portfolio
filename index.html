@@ -29,6 +29,34 @@ a{color:inherit;text-decoration:none;}
   outline-offset: 2px;
   border-radius: 4px;
 }
+@media (max-width: 760px) {
+  #about-grid, #contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  #hero {
+    padding-top: 200px !important;
+    min-height: auto !important;
+  }
+  #site-nav {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .hero-blur {
+    animation: none !important;
+    filter: blur(50px) !important;
+    width: 220px !important;
+    height: 220px !important;
+  }
+  #hussam-portfolio-root {
+    transition: none !important;
+  }
+}
+@media (max-width: 480px) {
+  #hero {
+    padding-top: 220px !important;
+  }
+}
 </style>
 </helmet>
 
@@ -37,7 +65,7 @@ a{color:inherit;text-decoration:none;}
 <div style="{{ spotlightStyle }}"></div>
 <div style="{{ progressBarStyle }}"></div>
 
-<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(20px,5vw,64px);background:{{ headerBg }};backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid {{ headerBorder }};transition:background .3s ease,border-color .3s ease;">
+<nav id="site-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(20px,5vw,64px);background:{{ headerBg }};backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid {{ headerBorder }};transition:background .3s ease,border-color .3s ease;">
   <a href="#hero" style="font-family:'Space Grotesk','Noto Kufi Arabic',sans-serif;font-weight:600;font-size:17px;letter-spacing:0.3px;flex:0 0 auto;">Hussam Aburahmah</a>
   <div style="display:flex;align-items:center;gap:clamp(10px,2.4vw,24px);flex-wrap:wrap;">
     <a href="#about" style="{{ aboutNavStyle }}">{{ T.nav.about }}</a>
@@ -59,8 +87,8 @@ a{color:inherit;text-decoration:none;}
 <main>
 <section id="hero" data-section="hero" style="position:relative;min-height:100vh;display:flex;align-items:center;padding:110px clamp(20px,5vw,64px) 80px;overflow:hidden;">
   <div style="position:absolute;inset:0;background-image:radial-gradient(circle, var(--border) 1px, transparent 1px);background-size:28px 28px;opacity:0.6;pointer-events:none;z-index:0;"></div>
-  <div style="position:absolute;top:10%;left:5%;width:380px;height:380px;border-radius:50%;background:var(--accent1);opacity:0.12;filter:blur(90px);animation:driftA 16s ease-in-out infinite;z-index:0;"></div>
-  <div style="position:absolute;bottom:5%;right:8%;width:340px;height:340px;border-radius:50%;background:var(--accent2);opacity:0.12;filter:blur(90px);animation:driftB 18s ease-in-out infinite;z-index:0;"></div>
+  <div class="hero-blur" style="position:absolute;top:10%;left:5%;width:380px;height:380px;border-radius:50%;background:var(--accent1);opacity:0.12;filter:blur(90px);animation:driftA 16s ease-in-out infinite;z-index:0;"></div>
+  <div class="hero-blur" style="position:absolute;bottom:5%;right:8%;width:340px;height:340px;border-radius:50%;background:var(--accent2);opacity:0.12;filter:blur(90px);animation:driftB 18s ease-in-out infinite;z-index:0;"></div>
   <div style="position:relative;z-index:1;width:100%;max-width:780px;margin:0 auto;">
     <div>
       <div style="font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent1);margin-bottom:18px;font-weight:500;height:16px;animation:fadeInUp .7s cubic-bezier(.16,1,.3,1) both;{{ roleFadeStyle }}">{{ rotatingRole }}</div>
@@ -102,7 +130,7 @@ a{color:inherit;text-decoration:none;}
 </div>
 
 <section id="about" data-section="about" style="padding:100px clamp(20px,5vw,64px);border-top:1px solid var(--border-soft);">
-  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(280px,1.3fr) minmax(220px,1fr);gap:60px;">
+  <div id="about-grid" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(280px,1.3fr) minmax(220px,1fr);gap:60px;">
     <div data-reveal="" style="opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);">
       <div style="font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent1);margin-bottom:14px;font-weight:500;">{{ T.about.eyebrow }}</div>
       <h2 style="font-family:'Space Grotesk','Noto Kufi Arabic',sans-serif;font-weight:600;font-size:clamp(26px,3.5vw,36px);margin:0 0 20px 0;">{{ T.about.heading }}</h2>
@@ -261,7 +289,7 @@ a{color:inherit;text-decoration:none;}
 </section>
 
 <section id="contact" data-section="contact" style="padding:100px clamp(20px,5vw,64px);border-top:1px solid var(--border-soft);">
-  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(260px,1fr) minmax(320px,1.2fr);gap:56px;">
+  <div id="contact-grid" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(260px,1fr) minmax(320px,1.2fr);gap:56px;">
     <div data-reveal="" style="opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);">
       <div style="font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent1);margin-bottom:14px;font-weight:500;">{{ T.contact.eyebrow }}</div>
       <h2 style="font-family:'Space Grotesk','Noto Kufi Arabic',sans-serif;font-weight:600;font-size:clamp(26px,3.5vw,36px);margin:0 0 20px 0;">{{ T.contact.heading }}</h2>
@@ -387,7 +415,7 @@ class Component extends DCLogic {
       certifications: { eyebrow: 'Certifications', heading: 'Continuous learning.', items: ['IBM Deep Learning with PyTorch, Keras and TensorFlow — IBM', 'IBM Machine Learning — IBM', 'Exploratory Data Analysis for Machine Learning — IBM', 'AI Agents and Agentic AI with Python & Generative AI — Vanderbilt University', 'Developing Explainable AI (XAI) — Duke University', 'Microservice Architectures — Vanderbilt University', 'Introduction to Microsoft Azure Cloud Services — Microsoft', 'Getting Started with Cisco Packet Tracer — Cisco'] },
       volunteering: { eyebrow: 'Community', heading: 'Volunteering & industry events.', items: [{ title: 'AI Resident — BAU AI Summit 2024', meta: '1st Attendance · Apr 2024', bullet: 'Explored ML and Deep Learning concepts; networked with 100+ AI professionals and gained insights into leading AI companies' }, { title: 'AI Resident — BAU AI Summit 2025', meta: '2nd Attendance · Mar 2025', bullet: 'Attended 10+ sessions on real-world AI applications; expanded professional network with AI researchers and industry specialists' }, { title: 'AI Resident — BAU AI Summit 2026', meta: '3rd Attendance · Mar 2026', bullet: 'Engaged with 20+ leading AI companies on cutting-edge trends in ML, Deep Learning, and Generative AI' }, { title: 'Participant — Kanz AI Training Hackathon', meta: 'Jul 2026', bullet: 'Applied hands-on ML and AI skills in a competitive hackathon environment; earned certificate of completion from Kanz' }] },
       contact: { eyebrow: 'Contact', heading: "Let's build something.", subtext: 'Open to AI engineering roles, FDE work, and collaborations. Reach out directly or use the form.', labels: { name: 'Name', email: 'Email', message: 'Message' }, placeholders: { name: 'Your name', email: 'you@example.com', message: 'Tell me about the opportunity or project' }, send: 'Send Message', sentMsg: 'Your email client should now be open with the message ready to send.', errors: { nameRequired: 'Name is required', nameShort: 'Name is too short', emailRequired: 'Email is required', emailInvalid: 'Enter a valid email address', messageRequired: 'Message is required', messageShort: 'Add a little more detail (10+ characters)' } },
-      footer: { copyright: '© 2026 Hussam Aburahmah.', email: 'Email' }
+      footer: { copyright: 'Hussam Aburahmah', email: 'Email' }
     },
     tr: {
       nav: { about: 'Hakkımda', skills: 'Yetenekler', experience: 'Deneyim', projects: 'Projeler', contact: 'İletişim', resume: 'CV İndir' },
@@ -425,7 +453,7 @@ class Component extends DCLogic {
       certifications: { eyebrow: 'Sertifikalar', heading: 'Sürekli öğrenme.', items: ['PyTorch, Keras ve TensorFlow ile Derin Öğrenme — IBM', 'Makine Öğrenmesi — IBM', 'Makine Öğrenmesi için Keşifsel Veri Analizi — IBM', 'Python ve Üretken Yapay Zeka ile Yapay Zeka Ajanları — Vanderbilt Üniversitesi', 'Açıklanabilir Yapay Zeka (XAI) Geliştirme — Duke Üniversitesi', 'Mikroservis Mimarileri — Vanderbilt Üniversitesi', 'Microsoft Azure Bulut Hizmetlerine Giriş — Microsoft', "Cisco Packet Tracer'a Başlangıç — Cisco"] },
       volunteering: { eyebrow: 'Topluluk', heading: 'Gönüllülük ve sektör etkinlikleri.', items: [{ title: 'Yapay Zeka Katılımcısı — BAU Yapay Zeka Zirvesi 2024', meta: '1. Katılım · Nis 2024', bullet: "Makine öğrenmesi ve derin öğrenme kavramlarını inceledim; 100'den fazla yapay zeka profesyoneliyle ağ kurdum ve önde gelen yapay zeka şirketleri hakkında bilgi edindim" }, { title: 'Yapay Zeka Katılımcısı — BAU Yapay Zeka Zirvesi 2025', meta: '2. Katılım · Mar 2025', bullet: "Gerçek dünya yapay zeka uygulamaları üzerine 10'dan fazla oturuma katıldım; yapay zeka araştırmacıları ve sektör uzmanlarıyla profesyonel ağımı genişlettim" }, { title: 'Yapay Zeka Katılımcısı — BAU Yapay Zeka Zirvesi 2026', meta: '3. Katılım · Mar 2026', bullet: "Makine öğrenmesi, derin öğrenme ve üretken yapay zekadaki en son eğilimler üzerine 20'den fazla önde gelen yapay zeka şirketiyle etkileşimde bulundum" }, { title: "Katılımcı — Kanz Yapay Zeka Eğitim Hackathon'u", meta: 'Tem 2026', bullet: "Rekabetçi bir hackathon ortamında uygulamalı makine öğrenmesi ve yapay zeka becerilerimi kullandım; Kanz'dan tamamlama sertifikası aldım" }] },
       contact: { eyebrow: 'İletişim', heading: 'Birlikte bir şey inşa edelim.', subtext: 'Yapay zeka mühendisliği rollerine, FDE çalışmalarına ve iş birliklerine açığım. Doğrudan ulaşabilir veya formu kullanabilirsiniz.', labels: { name: 'Ad Soyad', email: 'E-posta', message: 'Mesaj' }, placeholders: { name: 'Adınız', email: 'siz@ornek.com', message: 'Fırsat veya proje hakkında bana bilgi verin' }, send: 'Mesaj Gönder', sentMsg: 'E-posta uygulamanız şimdi mesajınız gönderilmeye hazır şekilde açılmış olmalı.', errors: { nameRequired: 'Ad Soyad gerekli', nameShort: 'Ad çok kısa', emailRequired: 'E-posta gerekli', emailInvalid: 'Geçerli bir e-posta adresi girin', messageRequired: 'Mesaj gerekli', messageShort: 'Biraz daha detay ekleyin (en az 10 karakter)' } },
-      footer: { copyright: '© 2026 Hussam Aburahmah.', email: 'E-posta' }
+      footer: { copyright: 'Hussam Aburahmah', email: 'E-posta' }
     },
     ar: {
       nav: { about: 'نبذة عني', skills: 'المهارات', experience: 'الخبرة', projects: 'المشاريع', contact: 'تواصل', resume: 'تحميل السيرة الذاتية' },
@@ -463,7 +491,7 @@ class Component extends DCLogic {
       certifications: { eyebrow: 'الشهادات', heading: 'تعلّم مستمر.', items: ['التعلم العميق باستخدام PyTorch وKeras وTensorFlow — IBM', 'تعلم الآلة — IBM', 'التحليل الاستكشافي للبيانات لتعلم الآلة — IBM', 'وكلاء الذكاء الاصطناعي والذكاء الاصطناعي الوكيلي بلغة Python والذكاء التوليدي — جامعة فاندربيلت', 'تطوير الذكاء الاصطناعي القابل للتفسير (XAI) — جامعة ديوك', 'بنى الخدمات المصغّرة — جامعة فاندربيلت', 'مقدمة في خدمات Microsoft Azure السحابية — Microsoft', 'بدء الاستخدام مع Cisco Packet Tracer — Cisco'] },
       volunteering: { eyebrow: 'المجتمع', heading: 'التطوع وفعاليات الصناعة.', items: [{ title: 'مشارك ذكاء اصطناعي — قمة BAU للذكاء الاصطناعي 2024', meta: 'الحضور الأول · أبريل 2024', bullet: 'استكشفت مفاهيم تعلم الآلة والتعلم العميق؛ وتواصلت مع أكثر من 100 محترف في الذكاء الاصطناعي واكتسبت رؤى حول الشركات الرائدة في هذا المجال' }, { title: 'مشارك ذكاء اصطناعي — قمة BAU للذكاء الاصطناعي 2025', meta: 'الحضور الثاني · مارس 2025', bullet: 'حضرت أكثر من 10 جلسات حول تطبيقات الذكاء الاصطناعي في العالم الحقيقي؛ ووسّعت شبكتي المهنية مع باحثين ومتخصصين في الصناعة' }, { title: 'مشارك ذكاء اصطناعي — قمة BAU للذكاء الاصطناعي 2026', meta: 'الحضور الثالث · مارس 2026', bullet: 'تفاعلت مع أكثر من 20 شركة رائدة في الذكاء الاصطناعي حول أحدث اتجاهات تعلم الآلة والتعلم العميق والذكاء الاصطناعي التوليدي' }, { title: 'مشارك — هاكاثون Kanz للتدريب على الذكاء الاصطناعي', meta: 'يوليو 2026', bullet: 'طبّقت مهارات عملية في تعلم الآلة والذكاء الاصطناعي في بيئة هاكاثون تنافسية؛ وحصلت على شهادة إتمام من Kanz' }] },
       contact: { eyebrow: 'تواصل', heading: 'لنبنِ شيئاً معاً.', subtext: 'متاح لأدوار هندسة الذكاء الاصطناعي وأعمال FDE والتعاون. تواصل معي مباشرة أو استخدم النموذج.', labels: { name: 'الاسم', email: 'البريد الإلكتروني', message: 'الرسالة' }, placeholders: { name: 'اسمك', email: 'you@example.com', message: 'أخبرني عن الفرصة أو المشروع' }, send: 'إرسال الرسالة', sentMsg: 'يجب أن يكون برنامج البريد الإلكتروني قد فُتح الآن مع رسالتك جاهزة للإرسال.', errors: { nameRequired: 'الاسم مطلوب', nameShort: 'الاسم قصير جداً', emailRequired: 'البريد الإلكتروني مطلوب', emailInvalid: 'أدخل بريداً إلكترونياً صحيحاً', messageRequired: 'الرسالة مطلوبة', messageShort: 'أضف مزيداً من التفاصيل (10 أحرف على الأقل)' } },
-      footer: { copyright: '© 2026 حسام أبو رحمة.', email: 'البريد الإلكتروني' }
+      footer: { copyright: 'حسام أبو رحمة', email: 'البريد الإلكتروني' }
     }
   };
 
